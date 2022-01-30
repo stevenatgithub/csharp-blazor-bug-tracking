@@ -12,12 +12,11 @@
 </EditForm>
 
 @code {
+    private Bug _bug;
+
     public Bug AddBug
     {
-        get
-        {
-            return new Bug();
-        }
+        get { return _bug; }
     }
 
     [Inject]
@@ -25,6 +24,12 @@
 
     [Inject]
     public NavigationManager NavService { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        _bug = new Bug();
+    }
 
     protected void HandleValidSubmit()
     {
